@@ -42,6 +42,11 @@ var Employees = React.createClass({
         newEmployeeList.push(res);
         that.setState({
           employees: newEmployeeList,
+          employee: {
+            name: '',
+            email: '',
+            manager: false
+          },
           errors: {}
         });
       },
@@ -73,14 +78,14 @@ var Employees = React.createClass({
               {employees}
               <tr>
                 <td>
-                  <input type="text" onChange={this.handleNameChange} /><br />
+                  <input type="text" value={this.state.employee.name} onChange={this.handleNameChange} /><br />
                   <span style={{color: 'red'}}>{this.state.errors.name}</span>
                 </td>
                 <td>
-                  <input type="text" onChange={this.handleEmailChange} /><br />
+                  <input value={this.state.employee.email} type="text" onChange={this.handleEmailChange} /><br />
                   <span style={{color: 'red'}}>{this.state.errors.email}</span>
                 </td>
-                <td><input type="checkbox" onChange={this.handleManagerChange} /></td>
+                <td><input value={this.state.employee.manager} type="checkbox" onChange={this.handleManagerChange} /></td>
                 <td><button onClick={this.handleHireEmployee}>Hire</button></td>
               </tr>
             </tbody>

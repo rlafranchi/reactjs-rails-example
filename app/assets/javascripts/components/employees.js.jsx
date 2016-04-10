@@ -56,10 +56,18 @@ var Employees = React.createClass({
     });
   },
 
+  handleFireEmployee(employee) {
+    var employeeList = this.state.employees.filter(function(item) {
+      return employee.id !== item.id;
+    });
+    this.setState({employees: employeeList});
+  },
+
   render() {
+    var that = this;
     employees = this.state.employees.map( function(employee) {
       return (
-        <Employee employee={employee} key={employee.id} />
+        <Employee employee={employee} key={employee.id} onFireEmployee={that.handleFireEmployee} />
       );
     });
     return (
